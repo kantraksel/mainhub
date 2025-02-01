@@ -1,0 +1,27 @@
+<%# 
+    Reference script: react-portal.ts
+    Available params: proxyPath, reactInfo, account
+%>
+
+<% 
+let preloads = '';
+for (let i = 0; i < reactInfo.core.length; i++) {
+    preloads += `<link rel="modulepreload" href="${proxyPath}/${reactInfo.core[i]}">`;
+}
+%>
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <link rel="icon" type="image/svg+xml" href="<%= `${proxyPath}/react.svg` %>" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>MainHub</title>
+        <script type="module" src="<%= `${proxyPath}/${reactInfo.site}` %>"></script>
+        <%- preloads %>
+        <link rel="stylesheet" href="<%= `${proxyPath}/${reactInfo.css}` %>">
+    </head>
+    <body>
+        <div id="root"></div>
+  </body>
+</html>
